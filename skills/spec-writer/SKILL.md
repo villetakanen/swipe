@@ -56,6 +56,15 @@ criteria.
 ### Deliverable 2: ...
 ```
 
+## Living Specs
+
+Specs are living documents, not write-once artifacts.
+
+- If code behavior changes, the spec MUST be updated in the same commit.
+- Mark outdated sections as deprecated rather than deleting them.
+- One spec per feature domain, not per issue or ticket.
+- PBIs reference specs — they do not duplicate requirements.
+
 ## Constraints
 
 - Do not write implementation code. Specify contracts and criteria only.
@@ -68,5 +77,5 @@ criteria.
 
 | Output | Location |
 |--------|----------|
-| Implementation specs | Inline in conversation or `docs/specs/` |
+| Feature specs | `spec/<feature-slug>/spec.md` |
 | Acceptance criteria | Included in each spec deliverable |

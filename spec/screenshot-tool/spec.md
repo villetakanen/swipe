@@ -20,7 +20,7 @@ Used by the `kb-writer` skill during crawl sessions.
 
 - **File:** `tools/screenshot.ts`
 - **Contract:**
-  - **Interface:** `npx tsx tools/screenshot.ts <url> <output-path>`
+  - **Interface:** `pnpm screenshot <url> <output-path>`
   - **Arguments:**
     - `url` (required) — full URL to capture
     - `output-path` (required) — file path for the output PNG
@@ -42,7 +42,7 @@ Used by the `kb-writer` skill during crawl sessions.
     - Success: nothing to stdout, PNG written to disk
     - Failure: error message to stderr, non-zero exit code
 - **Acceptance criteria:**
-  - [ ] `npx tsx tools/screenshot.ts https://example.com /tmp/test.png` produces a valid PNG
+  - [ ] `pnpm screenshot https://example.com /tmp/test.png` produces a valid PNG
   - [ ] Output PNG is 1280x800
   - [ ] Invalid URL exits with code 1 and stderr message
   - [ ] Missing arguments exits with code 1 and usage message
@@ -61,8 +61,8 @@ Used by the `kb-writer` skill during crawl sessions.
 
 ## Verification
 
-1. `npx tsx tools/screenshot.ts https://example.com /tmp/test.png` — produces PNG
+1. `pnpm screenshot https://example.com /tmp/test.png` — produces PNG
 2. `file /tmp/test.png` — reports PNG image data
 3. Image dimensions are 1280x800
-4. `npx tsx tools/screenshot.ts` (no args) — exits 1 with usage
-5. `npx tsx tools/screenshot.ts https://nonexistent.invalid /tmp/fail.png` — exits 1 with error
+4. `pnpm screenshot` (no args) — exits 1 with usage
+5. `pnpm screenshot https://nonexistent.invalid /tmp/fail.png` — exits 1 with error
