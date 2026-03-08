@@ -27,7 +27,7 @@ entry point for the core value loop: research → screenshot → analyze → wri
     2. Read existing KB entries under `packages/kb/examples/{problem-slug}/`
     3. Search the web for real-world examples of the design problem
     4. For each promising example:
-       a. Capture screenshot: `npx tsx tools/screenshot.ts <url> <output>`
+       a. Capture screenshot: `pnpm screenshot <url> <output>`
        b. Analyze the screenshot and page
        c. Write `.md` + `.png` to KB following the Zod schema
     5. Cross-reference new entries with existing ones in prose body

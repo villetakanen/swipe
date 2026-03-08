@@ -263,7 +263,7 @@ swipe/
 
 ### Screenshot tool
 
-`tools/screenshot.ts` is a single-purpose script at the repo root. It takes a URL and an output file path as arguments, launches headless Chromium via Playwright, captures the viewport at 1280×800, writes the PNG, and exits. Claude Code invokes it with `npx tsx tools/screenshot.ts <url> <output>`.
+`tools/screenshot.ts` is a single-purpose script at the repo root. It takes a URL and an output file path as arguments, launches headless Chromium via Playwright, captures the viewport at 1280×800, writes the PNG, and exits. Claude Code invokes it with `pnpm screenshot <url> <output>`.
 
 ### Vite alias wiring
 
@@ -328,5 +328,5 @@ The scaffold should be built in this order, each step verifiable before moving t
 2. **Vision + agent docs** — `docs/vision.md`, `AGENTS.md`, `CLAUDE.md` symlink. Verify: files exist and symlink resolves.
 3. **KB seed + vite alias** — one seed example (md + png) in `packages/kb/examples/`. Vite alias in viewer's Astro config pointing at KB. Content collection config with Zod schema. Verify: Astro parses the collection without errors.
 4. **Pages + styles** — three route levels in the viewer, dark CSS theme. Verify: seed example navigable through all three views.
-5. **Screenshot tool** — `tools/screenshot.ts` using Playwright. Verify: `npx tsx tools/screenshot.ts https://example.com test.png` produces a PNG.
+5. **Screenshot tool** — `tools/screenshot.ts` using Playwright. Verify: `pnpm screenshot https://example.com test.png` produces a PNG.
 6. **Agent integration** — `.claude/commands/crawl.md`. Verify: `/crawl "some topic"` in Claude Code produces new content files in `packages/kb/examples/`.

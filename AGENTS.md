@@ -12,7 +12,7 @@ When asked to research a design problem:
 
 1. **Read the existing KB first.** Check `packages/kb/examples/` for related problems and examples. Your analysis should build on what's already captured — reference adjacent examples, note contrasts, avoid redundant observations.
 2. **Search the web** for real-world examples of the design problem.
-3. **Capture screenshots** using `tools/screenshot.ts`.
+3. **Capture screenshots** using `pnpm screenshot <url> <output-path>`.
 4. **Analyze each example** and write structured markdown (frontmatter + prose) and the screenshot into `packages/kb/examples/{problem-slug}/`.
 
 The KB compounds. Later research is more valuable because it's informed by earlier research. Don't treat each crawl as isolated — connect it to what's already here.
@@ -36,4 +36,4 @@ Specs are the source of truth. Code fulfills specs; issues reference them.
 ## Tooling Rules
 
 - Always use `pnpm` to run scripts and tools. Never use `npx`, `tsx`, or other package runners directly.
-- The screenshot tool (`tools/screenshot.ts`) does not yet have a pnpm script — see [issue #7](https://github.com/villetakanen/swipe/issues/7). Do not attempt to run it until that's resolved.
+- Screenshot tool: `pnpm screenshot <url> <output-path>`

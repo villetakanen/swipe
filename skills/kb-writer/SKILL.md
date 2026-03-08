@@ -38,7 +38,7 @@ into the KB. Every entry you write makes the collection more valuable.
    - Examples that contrast with what's already in the KB
 4. **Capture screenshots.** For each example:
    ```
-   npx tsx tools/screenshot.ts <url> packages/kb/examples/{problem-slug}/{example-slug}.png
+   pnpm screenshot <url> packages/kb/examples/{problem-slug}/{example-slug}.png
    ```
 5. **Analyze each example.** Produce structured notes covering:
 

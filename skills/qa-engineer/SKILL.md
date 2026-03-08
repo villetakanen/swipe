@@ -19,7 +19,7 @@ KB entries pass validation, and the end-to-end pipeline functions.
 
 - Understand what was changed and what claims are being made
 - Have access to run `pnpm --filter viewer dev` for viewer testing
-- Have access to run `npx tsx tools/screenshot.ts` for tool testing
+- Have access to run `pnpm screenshot` for tool testing
 
 ## Test Areas
 
@@ -38,7 +38,7 @@ KB entries pass validation, and the end-to-end pipeline functions.
 4. **Screenshots exist:** Every `screenshot` path references an actual `.png` file
 
 ### Screenshot Tool
-1. **Captures successfully:** `npx tsx tools/screenshot.ts <url> <output>` produces a PNG
+1. **Captures successfully:** `pnpm screenshot <url> <output>` produces a PNG
 2. **Correct dimensions:** Output is 1280x800
 3. **Error handling:** Invalid URLs produce a non-zero exit code and stderr message
 

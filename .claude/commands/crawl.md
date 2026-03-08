@@ -22,7 +22,7 @@ For each promising example:
 
 ### a. Capture screenshot
 ```
-npx tsx tools/screenshot.ts <url> packages/kb/examples/{problem-slug}/{example-slug}.png
+pnpm screenshot <url> packages/kb/examples/{problem-slug}/{example-slug}.png
 ```
 
 ### b. Analyze and write the KB entry

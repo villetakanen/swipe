@@ -8,7 +8,7 @@ const url = process.argv[2];
 const outputPath = process.argv[3];
 
 if (!url || !outputPath) {
-	process.stderr.write("Usage: npx tsx tools/screenshot.ts <url> <output-path>\n");
+	process.stderr.write("Usage: pnpm screenshot <url> <output-path>\n");
 	process.exit(1);
 }
 

@@ -6,7 +6,8 @@
 		"dev": "pnpm --filter @swipe/viewer dev",
 		"lint": "biome check .",
 		"format": "biome format --write .",
-		"check": "tsc --build"
+		"check": "tsc --build",
+		"screenshot": "pnpm --filter @swipe/tools screenshot"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.4",

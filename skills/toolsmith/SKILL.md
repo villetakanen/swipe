@@ -31,7 +31,7 @@ Single-purpose Playwright script.
 
 **Interface:**
 ```
-npx tsx tools/screenshot.ts <url> <output-path>
+pnpm screenshot <url> <output-path>
 ```
 
 **Behavior:**
@@ -65,7 +65,7 @@ in `astro.config.mjs`. This is the only coupling point between the two packages.
 2. **Check existing state.** Read current config files before modifying.
 3. **Implement the change.** Keep it minimal — tools should do one thing.
 4. **Verify.**
-   - Screenshot tool: `npx tsx tools/screenshot.ts https://example.com /tmp/test.png`
+   - Screenshot tool: `pnpm screenshot https://example.com /tmp/test.png`
    - Monorepo: `pnpm install` succeeds, `pnpm --filter viewer dev` starts
    - Aliases: Astro resolves KB content without errors
 
