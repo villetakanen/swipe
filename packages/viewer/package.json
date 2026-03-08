@@ -1,0 +1,15 @@
+{
+	"name": "@swipe/viewer",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview"
+	},
+	"dependencies": {
+		"astro": "^5.5.3",
+		"@astrojs/svelte": "^7.0.4",
+		"svelte": "^5.20.5"
+	}
+}

@@ -1,0 +1,21 @@
+{
+	"name": "swipe",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "pnpm --filter @swipe/viewer dev",
+		"lint": "biome check .",
+		"format": "biome format --write .",
+		"check": "tsc --build"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"@commitlint/cli": "^19.6.1",
+		"@commitlint/config-conventional": "^19.6.0",
+		"lefthook": "^1.11.5",
+		"typescript": "^5.7.3"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": ["@biomejs/biome", "lefthook", "esbuild", "sharp"]
+	}
+}
