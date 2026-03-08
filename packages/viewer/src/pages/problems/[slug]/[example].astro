@@ -1,0 +1,107 @@
+---
+import { getCollection, render } from "astro:content";
+import Base from "../../../layouts/Base.astro";
+
+export async function getStaticPaths() {
+	const allExamples = await getCollection("examples");
+
+	return allExamples.map((entry) => {
+		const exampleSlug = entry.id.split("/").pop()?.replace(/\.md$/, "");
+		return {
+			params: {
+				slug: entry.data.problem,
+				example: exampleSlug,
+			},
+			props: { entry },
+		};
+	});
+}
+
+const { entry } = Astro.props;
+const { data } = entry;
+const { Content } = await render(entry);
+const screenshotPath = `/kb/${data.problem}/${data.screenshot.replace("./", "")}`;
+---
+<Base title={data.title}>
+	<nav class="breadcrumb">
+		<a href="/">Home</a>
+		<span class="separator">/</span>
+		<a href={`/problems/${data.problem}`}>{data.problemTitle}</a>
+		<span class="separator">/</span>
+		<span>{data.title}</span>
+	</nav>
+
+	<h1 style="margin-bottom: var(--space-sm);">{data.title}</h1>
+	<p style="margin-bottom: var(--space-lg);">
+		<a href={data.url} target="_blank" rel="noopener noreferrer" style="font-size: 0.875rem;">
+			{data.url} &#8599;
+		</a>
+	</p>
+
+	<div style="display: flex; gap: var(--space-sm); flex-wrap: wrap; margin-bottom: var(--space-xl);">
+		{data.tags.map((tag: string) => (
+			<span class="tag">{tag}</span>
+		))}
+	</div>
+
+	<img
+		src={screenshotPath}
+		alt={`Screenshot of ${data.title}`}
+		style="border-radius: var(--radius); margin-bottom: var(--space-xl); max-width: 100%; border: 1px solid var(--color-border);"
+	/>
+
+	<div style="display: grid; gap: var(--space-lg); grid-template-columns: 1fr; margin-bottom: var(--space-xl);">
+		<div class="panel">
+			<h3>Design Analysis</h3>
+			<dl>
+				<dt>Summary</dt>
+				<dd>{data.design.summary}</dd>
+				<dt>Layout</dt>
+				<dd>{data.design.layout}</dd>
+				<dt>Color</dt>
+				<dd>{data.design.color}</dd>
+				<dt>Typography</dt>
+				<dd>{data.design.typography}</dd>
+				<dt>Interaction</dt>
+				<dd>{data.design.interaction}</dd>
+			</dl>
+			<div style="margin-top: var(--space-md);">
+				<dt>Strengths</dt>
+				<ul>
+					{data.design.strengths.map((s: string) => <li>{s}</li>)}
+				</ul>
+			</div>
+			<div style="margin-top: var(--space-md);">
+				<dt>Weaknesses</dt>
+				<ul>
+					{data.design.weaknesses.map((w: string) => <li>{w}</li>)}
+				</ul>
+			</div>
+		</div>
+
+		<div class="panel">
+			<h3>Technical Analysis</h3>
+			<dl>
+				<dt>Summary</dt>
+				<dd>{data.technical.summary}</dd>
+				<dt>Approach</dt>
+				<dd>{data.technical.approach}</dd>
+				<dt>Frameworks</dt>
+				<dd>{data.technical.frameworks.join(", ")}</dd>
+				<dt>CSS Details</dt>
+				<dd>{data.technical.cssDetails}</dd>
+				<dt>Accessibility</dt>
+				<dd>{data.technical.a11y}</dd>
+				<dt>Performance</dt>
+				<dd>{data.technical.performance}</dd>
+			</dl>
+		</div>
+	</div>
+
+	<div class="panel">
+		<h3>Notes</h3>
+		<div style="color: var(--color-text-muted); line-height: 1.7;">
+			<Content />
+		</div>
+	</div>
+</Base>

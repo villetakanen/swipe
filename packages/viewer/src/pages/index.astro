@@ -1,14 +1,42 @@
 ---
+import { getCollection } from "astro:content";
+import Base from "../layouts/Base.astro";
+
+const allExamples = await getCollection("examples");
+
+const problemMap = new Map<string, { title: string; count: number }>();
+for (const entry of allExamples) {
+	const existing = problemMap.get(entry.data.problem);
+	if (existing) {
+		existing.count++;
+	} else {
+		problemMap.set(entry.data.problem, {
+			title: entry.data.problemTitle,
+			count: 1,
+		});
+	}
+}
+
+const problems = [...problemMap.entries()].map(([slug, data]) => ({
+	slug,
+	...data,
+}));
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Swipe</title>
-</head>
-<body>
-  <h1>Swipe</h1>
-  <p>UI/UX design research knowledge base.</p>
-</body>
-</html>
+<Base>
+	<h1>Design Problems</h1>
+	<p style="color: var(--color-text-muted); margin-bottom: var(--space-xl);">
+		{problems.length} {problems.length === 1 ? "problem" : "problems"} researched
+	</p>
+	<div class="card-grid">
+		{problems.map((p) => (
+			<div class="card">
+				<a href={`/problems/${p.slug}`}>
+					<h2 style="font-size: 1.125rem; margin-bottom: var(--space-sm);">{p.title}</h2>
+					<p style="color: var(--color-text-muted); font-size: 0.875rem;">
+						{p.count} {p.count === 1 ? "example" : "examples"}
+					</p>
+				</a>
+			</div>
+		))}
+	</div>
+</Base>
