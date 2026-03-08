@@ -1,5 +1,12 @@
+# OS files
+.DS_Store
+
 # Astro generated types
 .astro/
+
+# Local KB content (keep root problem folders via .gitkeep)
+packages/kb/examples/**/*.md
+packages/kb/examples/**/*.png
 
 # Logs
 logs
